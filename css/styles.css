@@ -10138,6 +10138,8 @@ h3 {
     font-size: 1.5rem;
   }
 }
+
+/*
 .portfolio .portfolio-item {
   cursor: pointer;
   position: relative;
@@ -10181,6 +10183,7 @@ h3 {
   color: #1abc9c;
   opacity: 1;
 }
+*/
 
 .floating-label-form-group {
   position: relative;
