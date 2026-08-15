@@ -238,6 +238,12 @@
     background:radial-gradient(120% 90% at 30% 15%, #2c2622 0%, var(--espresso) 55%, #17130f 100%);
     overflow:hidden; border:1px solid var(--champagne);
   }
+  .portrait img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
   .portrait::before{
     content:'';
     position:absolute; inset:0;
@@ -602,8 +608,11 @@
       <a href="#who" class="cta">Explore my story <span class="arrow">→</span></a>
     </div>
     <div class="portrait-wrap reveal">
-      <div class="portrait">
+      <!-- <div class="portrait">
         <div class="portrait-mark">AM</div>
+      </div> -->
+      <div class="portrait">
+        <img src="dp.webp" alt="Arnab Manandhar">
       </div>
       <div class="portrait-frame-offset"></div>
       <div class="portrait-caption">Lalitpur, Nepal / 2026</div>
