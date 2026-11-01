@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arnab Manandhar — About</title>
-<meta name="description" content="Arnab Manandhar. AI/ML engineer, RAG systems builder, classically trained musician. A personal profile.">
+<title>Arnab Manandhar — AI/ML Engineer &amp; Projects</title>
+<meta name="description" content="Arnab Manandhar, AI/ML engineer. Projects in RAG evaluation, retrieval, computer vision and trustworthy AI: Anchor, Spashta, Nyaya AI and more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -242,7 +242,7 @@
     width:100%;
     height:100%;
     object-fit:cover;
-    object-position:center;
+    object-position:42% 30%;
   }
   .portrait::before{
     content:'';
@@ -287,7 +287,7 @@
   .terminal-head span:nth-child(3){ background:var(--taupe); }
   .terminal-head .tt{
     margin-left:auto; font-family:var(--mono); font-size:9.5px; letter-spacing:.08em;
-    color:#8a8378; text-transform:uppercase;
+    color:#8a8378; text-transform:uppercase; white-space:nowrap; width:auto; height:auto;
   }
   .terminal-body{
     padding:13px; font-family:var(--mono); font-size:11.5px; line-height:1.85;
@@ -324,6 +324,161 @@
   }
   .ticker span.item b{ color:var(--burgundy); font-weight:600; }
   @keyframes ticker{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+  /* -------------------- PROJECTS -------------------- */
+  .projects-section{
+    position:relative; overflow:hidden;
+    background:var(--espresso); color:var(--ivory);
+    padding:var(--s7) var(--s6);
+  }
+  .projects-section::before{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(60% 50% at 85% 0%, rgba(122,38,56,.28) 0%, transparent 70%),
+      radial-gradient(50% 40% at 0% 100%, rgba(183,155,108,.12) 0%, transparent 70%);
+  }
+  .projects-section > *{ position:relative; }
+  .projects-header{ max-width:1400px; margin:0 auto var(--s5); display:grid; grid-template-columns:61.2fr 38.8fr; gap:var(--s6); align-items:end; }
+  .projects-header h2{ font-size:clamp(40px,6vw,96px); font-style:italic; line-height:.95; margin-top:var(--s3); color:var(--ivory); }
+  .projects-header h2 .count{ font-family:var(--mono); font-style:normal; font-size:13px; letter-spacing:.1em; color:var(--champagne); vertical-align:super; margin-left:8px; }
+  .projects-header p{ font-size:17px; color:#B8B2A8; max-width:44ch; line-height:1.6; }
+
+  .filter-bar{ max-width:1400px; margin:0 auto var(--s5); display:flex; flex-wrap:wrap; gap:10px; }
+  .chip{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+    background:transparent; color:#B8B2A8; cursor:pointer;
+    border:1px solid rgba(183,155,108,.3); border-radius:999px; padding:9px 16px;
+    transition:color .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
+  }
+  .chip:hover{ color:var(--ivory); border-color:var(--champagne); }
+  .chip.active{ background:var(--champagne); color:var(--espresso); border-color:var(--champagne); }
+  .chip .n{ opacity:.6; margin-left:6px; }
+
+  /* featured: Anchor */
+  .project-feature{
+    max-width:1400px; margin:0 auto var(--s4);
+    display:grid; grid-template-columns:1fr 1fr; gap:var(--s5);
+    border:1px solid rgba(183,155,108,.3);
+    background:linear-gradient(135deg, rgba(245,241,232,.04) 0%, rgba(245,241,232,0) 60%);
+    padding:var(--s5);
+  }
+  .project-feature h3{ font-size:clamp(40px,4.6vw,72px); }
+
+  .pipeline{ display:flex; flex-direction:column; border:1px solid rgba(183,155,108,.3); background:#17130f; min-height:340px; }
+  .pipe-steps{ display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid rgba(183,155,108,.25); }
+  .pipe-step{
+    background:none; border:none; cursor:pointer; text-align:left;
+    padding:13px 14px; position:relative;
+    font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#8a8378;
+    border-right:1px solid rgba(183,155,108,.15);
+    transition:color .3s var(--ease), background .3s var(--ease);
+  }
+  .pipe-step:last-child{ border-right:none; }
+  .pipe-step b{ display:block; font-weight:500; color:var(--champagne); margin-bottom:3px; }
+  .pipe-step:hover{ color:var(--ivory); }
+  .pipe-step.active{ color:var(--ivory); background:rgba(122,38,56,.25); }
+  .pipe-step .bar{ position:absolute; left:0; bottom:-1px; height:2px; width:0; background:var(--champagne); }
+  .pipe-step.active .bar{ animation:stepbar 4.5s linear forwards; }
+  .pipeline.paused .pipe-step.active .bar{ animation:none; width:100%; }
+  @keyframes stepbar{ from{ width:0; } to{ width:100%; } }
+  .pipe-body{ flex:1; padding:var(--s3); font-family:var(--mono); font-size:12px; line-height:1.85; color:#c9c2b4; position:relative; }
+  .pipe-panel{ display:none; }
+  .pipe-panel.active{ display:block; animation:panelIn .5s var(--ease); }
+  @keyframes panelIn{ from{ opacity:0; transform:translateY(8px);} to{ opacity:1; transform:none; } }
+  .pipe-panel .cmd{ color:var(--champagne); }
+  .pipe-panel .ok{ color:#8fae8a; }
+  .pipe-panel .bad{ color:#d0838f; }
+  .pipe-panel .cm{ color:#6f6a62; }
+  .pipe-caption{ font-family:var(--sans); font-size:13.5px; color:#8a8378; margin-top:var(--s2); line-height:1.55; }
+  .metric{ display:grid; grid-template-columns:90px 1fr 48px; align-items:center; gap:12px; margin:6px 0; }
+  .metric .track{ height:6px; background:rgba(183,155,108,.15); position:relative; overflow:hidden; }
+  .metric .fillbar{ position:absolute; inset:0 auto 0 0; width:0; background:linear-gradient(90deg, var(--burgundy), var(--champagne)); transition:width 1.1s var(--ease); }
+  .metric .v{ text-align:right; color:var(--ivory); }
+  .span-row{ display:grid; grid-template-columns:90px 1fr 56px; align-items:center; gap:12px; margin:6px 0; }
+  .span-row .seg{ height:10px; background:rgba(183,155,108,.55); transform-origin:left; transform:scaleX(0); transition:transform .8s var(--ease); }
+  .pipe-panel.active .span-row .seg{ transform:scaleX(1); }
+
+  /* cards */
+  .projects-grid{ max-width:1400px; margin:0 auto; display:grid; grid-template-columns:repeat(3, 1fr); gap:var(--s3); }
+  .project-card{
+    --mx:50%; --my:50%;
+    position:relative; display:flex; flex-direction:column;
+    padding:var(--s4); min-height:100%;
+    border:1px solid rgba(183,155,108,.22);
+    background:rgba(245,241,232,.025);
+    transform-style:preserve-3d;
+    transition:transform .45s var(--ease), border-color .35s var(--ease), opacity .45s var(--ease);
+    will-change:transform;
+  }
+  .project-card::before{
+    content:''; position:absolute; inset:0; pointer-events:none; opacity:0;
+    background:radial-gradient(420px circle at var(--mx) var(--my), rgba(183,155,108,.16), transparent 45%);
+    transition:opacity .35s var(--ease);
+  }
+  .project-card:hover{ border-color:rgba(183,155,108,.6); }
+  .project-card:hover::before{ opacity:1; }
+  .project-card.hide{ display:none; }
+  .project-card.fade-in{ animation:panelIn .5s var(--ease); }
+  .project-card .ghost{
+    position:absolute; right:var(--s3); top:var(--s2);
+    font-family:var(--serif); font-style:italic; font-size:76px; line-height:1;
+    color:rgba(183,155,108,.09); pointer-events:none; transition:color .4s var(--ease), transform .4s var(--ease);
+  }
+  .project-card:hover .ghost{ color:rgba(183,155,108,.2); transform:translateY(-4px); }
+
+  .p-tag{
+    font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--champagne); display:flex; gap:10px; margin-bottom:var(--s3);
+  }
+  .p-tag .dim{ color:#8a8378; }
+  .project-card h3, .project-feature h3{ font-family:var(--serif); font-style:italic; font-weight:500; line-height:1.05; color:var(--ivory); }
+  .project-card h3{ font-size:clamp(26px,2.3vw,34px); padding-right:60px; }
+  .p-sub{ font-family:var(--serif); font-size:16.5px; color:var(--champagne); margin:var(--s1) 0 var(--s3); }
+  .project-card p, .project-feature p{ font-size:15px; color:#B8B2A8; line-height:1.65; max-width:60ch; }
+  .project-card p + p, .project-feature p + p{ margin-top:var(--s2); }
+  .p-stack{ display:flex; flex-wrap:wrap; gap:6px; margin:var(--s3) 0; }
+  .p-stack span{
+    font-family:var(--mono); font-size:10px; letter-spacing:.04em; color:#c9c2b4;
+    border:1px solid rgba(183,155,108,.25); padding:3px 8px; border-radius:2px;
+  }
+  .p-links{ margin-top:auto; display:flex; flex-wrap:wrap; gap:var(--s4); padding-top:var(--s2); }
+  .p-link{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--ivory); font-weight:500; display:inline-flex; align-items:center; gap:8px;
+  }
+  .p-link .arr{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:26px; height:26px; border:1px solid rgba(183,155,108,.45); border-radius:50%;
+    color:var(--champagne); transition:transform .35s var(--ease), background .35s var(--ease), color .35s var(--ease);
+  }
+  .p-link:hover .arr{ transform:rotate(-45deg); background:var(--champagne); color:var(--espresso); }
+  .p-link:hover{ color:var(--champagne); }
+
+  .more-projects{ max-width:1400px; margin:var(--s6) auto 0; }
+  .more-projects > .label{ display:block; margin-bottom:var(--s3); color:var(--champagne); }
+  .more-row{
+    position:relative; display:grid; grid-template-columns:260px 1fr 220px; gap:var(--s4); align-items:baseline;
+    padding:var(--s3) 0; border-top:1px solid rgba(183,155,108,.2);
+    transition:padding-left .35s var(--ease);
+  }
+  .more-row:last-child{ border-bottom:1px solid rgba(183,155,108,.2); }
+  .more-row::before{ content:''; position:absolute; left:0; top:-1px; height:1px; width:0; background:var(--champagne); transition:width .5s var(--ease); }
+  .more-row:hover{ padding-left:var(--s3); }
+  .more-row:hover::before{ width:100%; }
+  .more-row .m-name{ font-family:var(--serif); font-style:italic; font-size:22px; color:var(--ivory); transition:color .3s var(--ease); }
+  .more-row:hover .m-name{ color:var(--champagne); }
+  .more-row .m-desc{ font-size:15px; color:#B8B2A8; }
+  .more-row .m-stack{ font-family:var(--mono); font-size:10px; letter-spacing:.08em; color:#8a8378; text-transform:uppercase; text-align:right; }
+
+  @media (max-width:1240px){ .projects-grid{ grid-template-columns:repeat(2,1fr); } }
+
+  /* hero headline word reveal */
+  .hero-text h1 .w{ display:inline-block; overflow:hidden; vertical-align:top; padding-bottom:.08em; }
+  .hero-text h1 .w > span{ display:inline-block; transform:translateY(105%); transition:transform .9s var(--ease); }
+  .hero-text.in h1 .w > span{ transform:none; }
+  .hero-text h1 em{ color:var(--burgundy); }
+  .magnetic{ transition:transform .25s var(--ease); }
+
 
   /* -------------------- STATEMENT / WHO I AM -------------------- */
   .statement-block{ padding:var(--s7) var(--s6); }
@@ -502,7 +657,7 @@
   .contact-btn{
     display:inline-block; background:var(--burgundy); color:var(--ivory);
     padding:21px 34px; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
-    border-radius:2px; transition:padding .3s var(--ease), background .3s var(--ease);
+    border-radius:2px; transition:padding .3s var(--ease), background .3s var(--ease), transform .25s var(--ease);
   }
   .contact-btn:hover{ padding:21px 46px 21px 34px; background:#8f2c41; }
 
@@ -544,12 +699,26 @@
     .human-section, .contact-section{ padding:var(--s6) var(--s4); }
 
     nav.links{ display:none; }
+    header.nav.open{ background:rgba(245,241,232,.97); backdrop-filter:blur(10px); border-bottom:1px solid var(--taupe); }
+    header.nav.open nav.links{
+      display:flex; flex-direction:column; align-items:flex-start; gap:var(--s3);
+      position:absolute; top:100%; left:0; right:0; padding:var(--s3) var(--s4) var(--s4);
+      background:rgba(245,241,232,.97); border-bottom:1px solid var(--taupe);
+    }
     .nav-menu-btn{ display:flex; }
 
     .hero{ min-height:auto; padding-top:calc(var(--s6) + 60px); }
     .hero-grid{ grid-template-columns:1fr; gap:var(--s5); }
     .portrait-wrap{ order:-1; max-width:280px; }
     .terminal-card{ display:none; }
+
+    .projects-section{ padding:var(--s6) var(--s4); }
+    .projects-header{ grid-template-columns:1fr; gap:var(--s3); }
+    .project-feature{ grid-template-columns:1fr; padding:var(--s4); }
+    .projects-grid{ grid-template-columns:1fr; }
+    .pipe-step{ padding:10px 8px; font-size:9px; }
+    .more-row{ grid-template-columns:1fr; gap:var(--s1); }
+    .more-row .m-stack{ text-align:left; }
 
     .statement-body{ grid-template-columns:1fr; }
     .field-notes{ display:none; }
@@ -570,6 +739,11 @@
 
   @media (max-width:560px){
     .values-grid{ grid-template-columns:1fr; }
+    .projects-section{ padding-left:16px; padding-right:16px; }
+    .project-card{ padding:var(--s4) var(--s3); }
+    .pipe-body{ font-size:10.5px; padding:var(--s2); }
+    .metric, .span-row{ grid-template-columns:70px 1fr 44px; gap:8px; }
+    .project-card .ghost{ font-size:56px; }
     header.nav{ padding:var(--s2) var(--s3); }
     .hero{ padding-left:var(--s3); padding-right:var(--s3); }
   }
@@ -588,9 +762,9 @@
 <header class="nav" id="siteNav">
   <div class="nav-name">Arnab Manandhar <span class="nav-dot pulse"></span></div>
   <nav class="links">
+    <a href="#projects">Projects</a>
     <a href="#who">About</a>
     <a href="#journey">Journey</a>
-    <a href="#values">Values</a>
     <a href="#beyond">Interests</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -602,10 +776,10 @@
   <canvas id="netCanvas" aria-hidden="true"></canvas>
   <div class="hero-grid">
     <div class="hero-text reveal">
-      <span class="label"><span class="blink"></span> About Me / Personal Profile</span>
-      <h1>A little about the person behind the work.</h1>
-      <p class="lead">I'm Arnab, an AI/ML engineer, RAG-pipeline builder, and classically trained musician working out of Lalitpur, Nepal. Most days I'm making language models more honest about what they know.</p>
-      <a href="#who" class="cta">Explore my story <span class="arrow">→</span></a>
+      <span class="label"><span class="blink"></span> AI/ML Engineer / Lalitpur, Nepal</span>
+      <h1>I build AI systems that <em>cite their sources.</em></h1>
+      <p class="lead">I'm Arnab, an AI/ML engineer and classically trained musician from Lalitpur, Nepal. I build RAG pipelines, retrieval evaluation tooling, and computer vision systems, and I care most about whether an answer is actually grounded in evidence.</p>
+      <a href="#projects" class="cta magnetic">See my projects <span class="arrow">→</span></a>
     </div>
     <div class="portrait-wrap reveal">
       <!-- <div class="portrait">
@@ -634,23 +808,199 @@
     <span class="item">nDCG <b>0.91</b></span>
     <span class="item">MRR <b>0.84</b></span>
     <span class="item"><b>1ST PLACE</b>, DRISTI 3.0 HACKATHON</span>
-    <span class="item">FUSEMACHINES AI FELLOWSHIP · <b>GRADUATE</b></span>
-    <span class="item"><b>6</b> SHIPPED PROJECTS</span>
+    <span class="item">SMARTCAL · <b>99% mAP@50</b>, PUBLISHED</span>
+    <span class="item"><b>10+</b> OPEN-SOURCE PROJECTS</span>
     <span class="item">QS IMPACT GLOBAL YOUTH AMBASSADOR</span>
     <span class="item">RECALL@10 <b>0.89</b></span>
     <span class="item">nDCG <b>0.91</b></span>
     <span class="item">MRR <b>0.84</b></span>
     <span class="item"><b>1ST PLACE</b>, DRISTI 3.0 HACKATHON</span>
-    <span class="item">FUSEMACHINES AI FELLOWSHIP · <b>GRADUATE</b></span>
-    <span class="item"><b>6</b> SHIPPED PROJECTS</span>
+    <span class="item">SMARTCAL · <b>99% mAP@50</b>, PUBLISHED</span>
+    <span class="item"><b>10+</b> OPEN-SOURCE PROJECTS</span>
     <span class="item">QS IMPACT GLOBAL YOUTH AMBASSADOR</span>
   </div>
 </div>
 
-<!-- 01 WHO I AM -->
+<!-- 01 PROJECTS -->
+<section class="projects-section" id="projects">
+  <div class="projects-header reveal">
+    <div>
+      <span class="label on-dark">01 / Selected Projects</span>
+      <h2>Things I've built.<span class="count">(07)</span></h2>
+    </div>
+    <p>Most of my work asks one question: is this answer actually grounded in something real? These projects are my attempts to measure it, enforce it, and ship it.</p>
+  </div>
+
+  <div class="filter-bar reveal" role="group" aria-label="Filter projects">
+    <button class="chip active" data-filter="all">All<span class="n">07</span></button>
+    <button class="chip" data-filter="rag">RAG &amp; Evaluation<span class="n">04</span></button>
+    <button class="chip" data-filter="vision">Computer Vision<span class="n">02</span></button>
+    <button class="chip" data-filter="data">Data &amp; Web<span class="n">01</span></button>
+  </div>
+
+  <article class="project-feature reveal" data-cat="rag">
+    <div style="display:flex; flex-direction:column;">
+      <div class="p-tag"><span>Featured</span><span class="dim">Open Source · 2026</span></div>
+      <h3>Anchor</h3>
+      <div class="p-sub">Deterministic evaluation &amp; tracing for RAG pipelines</div>
+      <p>An open-source library that answers the question you should ask before every deploy: did this change make my RAG pipeline better or worse? Retrieval is scored with pure math (Recall@k, MRR, nDCG, MAP), and faithfulness comes from a claim-level LLM judge that must cite the exact retrieved chunk behind each claim.</p>
+      <p>Every run is traced to SQLite with per-span latency, and a CLI diffs pipeline versions before you ship. Ships with pytest, GitHub Actions CI and a Streamlit dashboard, and runs fully offline when no API key is set.</p>
+      <div class="p-stack"><span>Python</span><span>Pydantic</span><span>SQLite</span><span>Streamlit</span><span>pytest</span><span>GitHub Actions</span></div>
+      <div class="p-links"><a class="p-link" href="https://github.com/arnabmanandhar/anchor" target="_blank" rel="noopener">View on GitHub <span class="arr">→</span></a></div>
+    </div>
+
+    <div>
+      <div class="pipeline" id="pipeline">
+        <div class="pipe-steps" role="tablist" aria-label="How Anchor evaluates a run">
+          <button class="pipe-step active" role="tab" data-step="0"><b>01</b>Retrieve<span class="bar"></span></button>
+          <button class="pipe-step" role="tab" data-step="1"><b>02</b>Score<span class="bar"></span></button>
+          <button class="pipe-step" role="tab" data-step="2"><b>03</b>Judge<span class="bar"></span></button>
+          <button class="pipe-step" role="tab" data-step="3"><b>04</b>Trace<span class="bar"></span></button>
+        </div>
+        <div class="pipe-body">
+          <div class="pipe-panel active">
+            <span class="cmd">$</span> anchor run --pipeline nyaya-ai<br>
+            <span class="cm"># query: "Is the right to education fundamental?"</span><br>
+            &nbsp;1&nbsp; art_31.1&nbsp;&nbsp; <span class="ok">relevant</span>&nbsp; 0.82<br>
+            &nbsp;2&nbsp; art_31.3&nbsp;&nbsp; <span class="ok">relevant</span>&nbsp; 0.77<br>
+            &nbsp;3&nbsp; art_39.2&nbsp;&nbsp; <span class="cm">--------</span>&nbsp; 0.61<br>
+            &nbsp;4&nbsp; art_31.5&nbsp;&nbsp; <span class="ok">relevant</span>&nbsp; 0.58
+          </div>
+          <div class="pipe-panel">
+            <span class="cmd">$</span> anchor score --k 10<br>
+            <div class="metric"><span>recall@10</span><span class="track"><span class="fillbar" data-w="89"></span></span><span class="v">0.89</span></div>
+            <div class="metric"><span>mrr</span><span class="track"><span class="fillbar" data-w="84"></span></span><span class="v">0.84</span></div>
+            <div class="metric"><span>nDCG</span><span class="track"><span class="fillbar" data-w="91"></span></span><span class="v">0.91</span></div>
+            <div class="metric"><span>map</span><span class="track"><span class="fillbar" data-w="80"></span></span><span class="v">0.80</span></div>
+            <span class="cm"># pure math: same input, same number</span>
+          </div>
+          <div class="pipe-panel">
+            <span class="cmd">$</span> anchor judge --faithfulness<br>
+            claim 1&nbsp; <span class="ok">✓ supported</span>&nbsp;&nbsp; → art_31.1<br>
+            claim 2&nbsp; <span class="ok">✓ supported</span>&nbsp;&nbsp; → art_31.3<br>
+            claim 3&nbsp; <span class="bad">✗ unsupported</span> → none<br>
+            claim 4&nbsp; <span class="ok">✓ supported</span>&nbsp;&nbsp; → art_31.5<br>
+            <span class="cm"># every claim must cite its chunk</span><br>
+            faithfulness&nbsp; <span class="ok">0.75</span>
+          </div>
+          <div class="pipe-panel">
+            <span class="cmd">$</span> anchor diff v1 v2<br>
+            <div class="span-row"><span>retrieve</span><span class="seg" style="width:30%"></span><span>142ms</span></div>
+            <div class="span-row"><span>rerank</span><span class="seg" style="width:18%"></span><span>86ms</span></div>
+            <div class="span-row"><span>generate</span><span class="seg" style="width:88%"></span><span>1.2s</span></div>
+            <div class="span-row"><span>judge</span><span class="seg" style="width:60%"></span><span>0.8s</span></div>
+            nDCG <span class="ok">+0.04</span> · faithfulness <span class="ok">+0.11</span> → <span class="ok">ship v2</span>
+          </div>
+        </div>
+      </div>
+      <div class="pipe-caption">An illustrative run. Click a step to see what Anchor checks at each stage.</div>
+    </div>
+  </article>
+
+  <div class="projects-grid">
+    <article class="project-card reveal" data-cat="rag">
+      <span class="ghost">02</span>
+      <div class="p-tag"><span>NLP · RAG</span><span class="dim">2026</span></div>
+      <h3>Spashta <span style="font-style:normal">(स्पष्ट)</span></h3>
+      <div class="p-sub">News integrity reports for Nepali and English</div>
+      <p>Checks how a story is told: whether the headline matches the body, how sensational the wording is, whether claims are attributed, and whether independent outlets report the same facts. Every finding points to the words that produced it.</p>
+      <p>Hybrid retrieval fuses BM25, multilingual embeddings and a cross-language index, so Nepali, English and romanised Nepali coverage meet.</p>
+      <div class="p-stack"><span>Python</span><span>BM25</span><span>multilingual-e5</span><span>RRF</span><span>Anchor</span></div>
+      <div class="p-links"><a class="p-link" href="https://github.com/arnabmanandhar/spashta" target="_blank" rel="noopener">GitHub <span class="arr">→</span></a></div>
+    </article>
+
+    <article class="project-card reveal" data-cat="rag">
+      <span class="ghost">03</span>
+      <div class="p-tag"><span>Legal AI · RAG</span><span class="dim">2025</span></div>
+      <h3>Nyaya AI</h3>
+      <div class="p-sub">Explainable legal search over Nepal's constitution</div>
+      <p>A RAG search engine over Part 3 of the Constitution of Nepal. Compared BM25, SBERT and hybrid retrieval on Recall, MRR, nDCG and MAP, and chose hybrid for the best overall performance.</p>
+      <p>Fine-tuned three T5 variants and Mistral for legal QA, producing evidence-backed explanations grounded in retrieved clauses, with Nepali–English translation.</p>
+      <div class="p-stack"><span>FAISS</span><span>SBERT</span><span>T5</span><span>Mistral</span><span>Streamlit</span></div>
+    </article>
+
+    <article class="project-card reveal" data-cat="rag">
+      <span class="ghost">04</span>
+      <div class="p-tag"><span>LLM Backend</span><span class="dim">2026</span></div>
+      <h3>TaskFlow RAG API</h3>
+      <div class="p-sub">A cited, guarded knowledge-base API</div>
+      <p>A FastAPI service that retrieves section-aligned chunks from ChromaDB and answers only from that evidence, with document and section citations. Weak matches fall back to a clearly labelled offline tool instead of guessing.</p>
+      <p>Pydantic-validated output, injection-aware prompts, SSE streaming and structured JSON logs with timings and token usage.</p>
+      <div class="p-stack"><span>FastAPI</span><span>ChromaDB</span><span>Groq</span><span>Pydantic</span></div>
+      <div class="p-links"><a class="p-link" href="https://github.com/arnabmanandhar/rag-agent-api" target="_blank" rel="noopener">GitHub <span class="arr">→</span></a></div>
+    </article>
+
+    <article class="project-card reveal" data-cat="vision">
+      <span class="ghost">05</span>
+      <div class="p-tag"><span>Computer Vision · Published</span><span class="dim">2024</span></div>
+      <h3>SmartCal</h3>
+      <div class="p-sub">Calorie recognition for Nepali food</div>
+      <p>A Mask R-CNN system that segments Nepali dishes from ESP32-CAM images, estimates portion weight, and calculates calories, with a React dashboard for intake history and daily goals.</p>
+      <p>Reached 99% mAP@50 and was published in the KEC Journal of Science and Engineering.</p>
+      <div class="p-stack"><span>Mask R-CNN</span><span>ESP32-CAM</span><span>Node.js</span><span>React</span></div>
+      <div class="p-links"><a class="p-link" href="https://github.com/arnabmanandhar/SmartCal" target="_blank" rel="noopener">GitHub <span class="arr">→</span></a></div>
+    </article>
+
+    <article class="project-card reveal" data-cat="vision">
+      <span class="ghost">06</span>
+      <div class="p-tag"><span>Vision + Speech</span><span class="dim">2025</span></div>
+      <h3>VQA Voyager</h3>
+      <div class="p-sub">Voice-based heritage site assistant</div>
+      <p>Combines YOLOv8 object detection with BART question answering so visitors can ask about UNESCO heritage sites in the Kathmandu Valley by speaking, and hear the answer back.</p>
+      <p>Built for accessibility: real-time image capture and spoken Q&amp;A for tourists and visually impaired users.</p>
+      <div class="p-stack"><span>YOLOv8</span><span>BART</span><span>Speech I/O</span></div>
+      <div class="p-links"><a class="p-link" href="https://github.com/arnabmanandhar/VQA-Voyager" target="_blank" rel="noopener">GitHub <span class="arr">→</span></a></div>
+    </article>
+
+    <article class="project-card reveal" data-cat="data">
+      <span class="ghost">07</span>
+      <div class="p-tag"><span>Data · Web</span><span class="dim">2026</span></div>
+      <h3>Nepal, Climate &amp; AI</h3>
+      <div class="p-sub">A fully cited interactive explainer</div>
+      <p>An interactive look at Nepal's climate exposure and the resource cost of AI. Every number is traced to a source, a date and a caveat; anything unsourced is listed as a gap, not estimated.</p>
+      <p>Includes an automated evidence audit and tests that check every rendered figure is traceable.</p>
+      <div class="p-stack"><span>JavaScript</span><span>Chart.js</span><span>Evidence audit</span></div>
+      <div class="p-links">
+        <a class="p-link" href="https://nepal-climate-ai.vercel.app/" target="_blank" rel="noopener">Live <span class="arr">→</span></a>
+        <a class="p-link" href="https://github.com/arnabmanandhar/nepal-climate-ai" target="_blank" rel="noopener">GitHub <span class="arr">→</span></a>
+      </div>
+    </article>
+  </div>
+
+  <div class="more-projects reveal">
+    <span class="label">More On GitHub</span>
+    <a class="more-row" href="https://github.com/arnabmanandhar/YOLO-RASA-Object-Detection-Chatbot" target="_blank" rel="noopener">
+      <span class="m-name">YOLO-RASA</span>
+      <span class="m-desc">A chatbot that detects objects in images with YOLOv8 and talks about them through Rasa.</span>
+      <span class="m-stack">YOLOv8 · Rasa</span>
+    </a>
+    <a class="more-row" href="https://github.com/arnabmanandhar/AI-Note-Summarizer" target="_blank" rel="noopener">
+      <span class="m-name">AI Note Summarizer</span>
+      <span class="m-desc">A FastAPI service that summarizes long notes with Hugging Face transformers, with tests, Docker and CI.</span>
+      <span class="m-stack">FastAPI · Docker</span>
+    </a>
+    <a class="more-row" href="https://github.com/arnabmanandhar/Data-Mining-Projects" target="_blank" rel="noopener">
+      <span class="m-name">Data Mining Projects</span>
+      <span class="m-desc">ANN, decision tree, random forest, K-means, naive Bayes and PCA experiments.</span>
+      <span class="m-stack">Python · scikit-learn</span>
+    </a>
+    <a class="more-row" href="https://github.com/arnabmanandhar/Voteware" target="_blank" rel="noopener">
+      <span class="m-name">Voteware</span>
+      <span class="m-desc">A console electronic voting system with voter and candidate registration.</span>
+      <span class="m-stack">C++</span>
+    </a>
+    <a class="more-row" href="https://github.com/arnabmanandhar" target="_blank" rel="noopener">
+      <span class="m-name">Everything else</span>
+      <span class="m-desc">The full list of repositories, experiments and works in progress.</span>
+      <span class="m-stack">github.com/arnabmanandhar →</span>
+    </a>
+  </div>
+</section>
+
+<!-- 02 WHO I AM -->
 <section class="statement-block" id="who">
   <div class="statement-inner">
-    <span class="label reveal">01 / Who I Am</span>
+    <span class="label reveal">02 / Who I Am</span>
     <h2 class="big-statement reveal">I believe the most interesting people are always becoming something new.</h2>
     <div class="statement-body">
       <div class="field-notes reveal">
@@ -660,14 +1010,14 @@
           <dd>Lalitpur, Nepal</dd>
           <dt>Studying</dt>
           <dd>B.E. Electronics, Comm. &amp; Info. Engineering, Thapathali Campus</dd>
-          <dt>Working</dt>
-          <dd>AI/ML Engineer Intern, Fusemachines</dd>
+          <dt>Building</dt>
+          <dd>Anchor &amp; Spashta, open-source RAG tooling</dd>
           <dt>Also</dt>
           <dd>Diploma, Indian Classical Music (Raag)</dd>
         </dl>
       </div>
       <div class="reveal">
-        <p>I grew up in Lalitpur with two instincts that never quite separated: wanting to know how things work, and wanting to make something out of what I knew. That combination has put me inside a raag lesson, a robotics workshop, and, more recently, the orchestration layer of an automated grading system.</p>
+        <p>I grew up in Lalitpur with two instincts that never quite separated: wanting to know how things work, and wanting to make something out of what I knew. That combination has put me inside a raag lesson, a robotics workshop, and, more recently, an open-source library that checks whether a RAG pipeline's answers are grounded in what it retrieved.</p>
         <p>Most of my working hours go toward retrieval-augmented systems and one uncomfortable question: is this answer actually grounded in something real? I care about that more than is strictly reasonable, which is why I keep building evaluation tools nobody asked for.</p>
         <p>I also spent years training in Indian classical music before I trained a neural network. The discipline required for both turned out to be closer than I expected.</p>
       </div>
@@ -685,7 +1035,7 @@
       <h2>More than<br>a résumé.</h2>
     </div>
     <div class="resume-copy reveal">
-      <p>A résumé can tell you I've built RAG pipelines, fine-tuned models for legal question answering, and helped architect an examination platform for an AI fellowship. It can't tell you why a wrong citation in a retrieval system bothers me the same way a flat note does.</p>
+      <p>A résumé can tell you I've built RAG pipelines, fine-tuned models for legal question answering, and shipped computer vision systems for heritage sites and Nepali food. It can't tell you why a wrong citation in a retrieval system bothers me the same way a flat note does.</p>
       <p>Job titles are a fair summary. They're rarely the full account.</p>
       <div class="trait-rows">
         <div class="trait-row"><span>Curious By Nature</span><span class="num">01</span></div>
@@ -702,7 +1052,7 @@
 <!-- JOURNEY -->
 <section class="journey-section" id="journey">
   <div class="journey-header reveal">
-    <span class="label">02 / The Journey</span>
+    <span class="label">03 / The Journey</span>
     <h2>The journey so far.</h2>
   </div>
   <div class="timeline">
@@ -743,7 +1093,7 @@
       <div class="timeline-year">2026</div>
       <div class="timeline-content">
         <h3>The Next Chapter</h3>
-        <p>Joined Fusemachines as an AI/ML Engineer Intern, architecting the orchestration layer of an end-to-end examination platform and co-designing AI curriculum with a U.S. university partner. Named a QS Impact Global Youth Ambassador. Still building things on the side.</p>
+        <p>Released Anchor, an open-source evaluation and tracing layer for RAG pipelines, and built Spashta on top of it to give readers evidence-backed integrity reports for Nepali and English news. Named a QS Impact Global Youth Ambassador.</p>
       </div>
     </div>
   </div>
@@ -758,7 +1108,7 @@
     <circle class="circuit-dot" r="3.5" id="pathDot2"/>
   </svg>
   <div class="values-header reveal">
-    <span class="label on-dark">03 / What Matters</span>
+    <span class="label on-dark">04 / What Matters</span>
     <h2>The principles I try to carry with me.</h2>
   </div>
   <div class="values-grid">
@@ -798,7 +1148,7 @@
 <!-- BEYOND WORK -->
 <section class="beyond-section" id="beyond">
   <div class="beyond-header reveal">
-    <span class="label">04 / Beyond The Work</span>
+    <span class="label">05 / Beyond The Work</span>
     <h2>There's more to me than what I make.</h2>
   </div>
   <div class="beyond-grid">
@@ -833,19 +1183,6 @@
       <span class="g-caption">A quiet morning of practice.</span>
     </div>
     <div class="gallery-col">
-      <div class="g-item reveal">
-        <div class="code-card">
-          <div class="terminal-head">
-            <span></span><span></span><span></span>
-            <span class="tt">anchor.py</span>
-          </div>
-          <div><span class="kw">def</span> <span class="fn">evaluate</span>(query, retrieved):<br>
-          &nbsp;&nbsp;recall = recall_at_k(retrieved, k=<span class="st">10</span>)<br>
-          &nbsp;&nbsp;score&nbsp; = judge.faithfulness(query, retrieved)<br>
-          &nbsp;&nbsp;<span class="cm"># must cite the exact chunk</span><br>
-          &nbsp;&nbsp;<span class="kw">return</span> Report(recall, score)</div>
-        </div>
-      </div>
       <div class="g-item g-wide reveal">
         <div class="tex tex-3"></div>
         <span class="g-caption">Things worth noticing.</span>
@@ -902,10 +1239,10 @@
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
   <div class="contact-inner">
-    <span class="label on-dark">05 / Let's Connect</span>
+    <span class="label on-dark">06 / Let's Connect</span>
     <h2>If you've made it this far, we should probably say hello.</h2>
     <p class="sub">Whether it's an interesting idea, a research collaboration, a thoughtful conversation, or simply a chance to connect, I'd love to hear from you.</p>
-    <a href="mailto:arnab.manandhar11@gmail.com" class="contact-btn">Get In Touch →</a>
+    <a href="mailto:arnab.manandhar11@gmail.com" class="contact-btn magnetic">Get In Touch →</a>
     <div class="contact-links">
       <a href="mailto:arnab.manandhar11@gmail.com">arnab.manandhar11@gmail.com</a>
       <a href="https://linkedin.com/in/arnabmanandhar" target="_blank" rel="noopener">LinkedIn</a>
@@ -956,6 +1293,16 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   reveals.forEach(el => io.observe(el));
 
+  // Mobile menu
+  const menuBtn = document.querySelector('.nav-menu-btn');
+  if (menuBtn){
+    menuBtn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open);
+    });
+    document.querySelectorAll('nav.links a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+  }
+
   // Smooth in-page nav
   document.querySelectorAll('nav.links a').forEach(a => {
     a.addEventListener('click', (e) => {
@@ -975,7 +1322,7 @@
       mx = e.clientX; my = e.clientY;
       dot.classList.add('active');
     });
-    document.querySelectorAll('a, button, .value-block, .trait-row').forEach(el => {
+    document.querySelectorAll('a, button, .value-block, .trait-row, .project-card, .pipe-step').forEach(el => {
       el.addEventListener('mouseenter', () => dot.classList.add('big'));
       el.addEventListener('mouseleave', () => dot.classList.remove('big'));
     });
@@ -987,6 +1334,104 @@
     loop();
   }
 
+  // Hero headline word reveal
+  (function(){
+    const h1 = document.querySelector('.hero-text h1');
+    if (!h1 || reduceMotion) return;
+    let i = 0;
+    const wrap = (node) => {
+      [...node.childNodes].forEach(n => {
+        if (n.nodeType === 3){
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)){ frag.appendChild(document.createTextNode(part)); return; }
+            const w = document.createElement('span'); w.className = 'w';
+            const s = document.createElement('span'); s.textContent = part;
+            s.style.transitionDelay = (0.15 + i++ * 0.07) + 's';
+            w.appendChild(s); frag.appendChild(w);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1){ wrap(n); }
+      });
+    };
+    wrap(h1);
+  })();
+
+  // Magnetic buttons
+  if (!reduceMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    document.querySelectorAll('.magnetic').forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width/2, y = e.clientY - r.top - r.height/2;
+        el.style.transform = `translate(${x*0.25}px, ${y*0.35}px)`;
+      });
+      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+    });
+  }
+
+  // Project cards: spotlight + tilt
+  (function(){
+    const fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+    if (!fine) return;
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        card.style.setProperty('--mx', (px*100) + '%');
+        card.style.setProperty('--my', (py*100) + '%');
+        if (!reduceMotion) card.style.transform = `perspective(900px) rotateX(${(0.5-py)*5}deg) rotateY(${(px-0.5)*6}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+  })();
+
+  // Project filters
+  (function(){
+    const chips = document.querySelectorAll('.chip');
+    const items = document.querySelectorAll('.project-card, .project-feature');
+    chips.forEach(chip => chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.toggle('active', c === chip));
+      const f = chip.dataset.filter;
+      items.forEach(el => {
+        const show = f === 'all' || el.dataset.cat === f;
+        el.classList.toggle('hide', !show);
+        el.style.display = show ? '' : 'none';
+        if (show){ el.classList.add('in'); el.classList.remove('fade-in'); void el.offsetWidth; el.classList.add('fade-in'); }
+      });
+    }));
+  })();
+
+  // Anchor pipeline explorer
+  (function(){
+    const root = document.getElementById('pipeline');
+    if (!root) return;
+    const steps = root.querySelectorAll('.pipe-step');
+    const panels = root.querySelectorAll('.pipe-panel');
+    let cur = 0, timer = null, started = false;
+    function show(i){
+      cur = i;
+      steps.forEach((s,k) => { s.classList.toggle('active', k===i); s.setAttribute('aria-selected', k===i); });
+      panels.forEach((p,k) => p.classList.toggle('active', k===i));
+      root.querySelectorAll('.fillbar').forEach(b => b.style.width = '0');
+      if (i === 1) setTimeout(() => panels[1].querySelectorAll('.fillbar').forEach(b => b.style.width = b.dataset.w + '%'), 60);
+      // restart progress bar animation
+      steps.forEach(s => { const b = s.querySelector('.bar'); b.style.animation = 'none'; void b.offsetWidth; b.style.animation = ''; });
+    }
+    function auto(){
+      clearInterval(timer);
+      if (reduceMotion) return;
+      timer = setInterval(() => show((cur + 1) % steps.length), 4500);
+    }
+    steps.forEach((s,k) => s.addEventListener('click', () => {
+      show(k); root.classList.add('paused'); clearInterval(timer);
+    }));
+    if (reduceMotion) root.classList.add('paused');
+    new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => { if (e.isIntersecting && !started){ started = true; show(0); auto(); obs.disconnect(); } });
+    }, { threshold: 0.35 }).observe(root);
+  })();
+
   // Hero network canvas
   (function(){
     const canvas = document.getElementById('netCanvas');
@@ -994,6 +1439,9 @@
     const ctx = canvas.getContext('2d');
     const hero = canvas.parentElement;
     let W, H, nodes, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const mouse = { x:-9999, y:-9999 };
+    hero.addEventListener('mousemove', e => { const r = hero.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+    hero.addEventListener('mouseleave', () => { mouse.x = mouse.y = -9999; });
 
     function resize(){
       W = hero.clientWidth; H = hero.clientHeight;
@@ -1026,6 +1474,16 @@
             ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
             ctx.stroke();
           }
+        }
+      }
+      for (const n of nodes){
+        const dx = mouse.x - n.x, dy = mouse.y - n.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 190){
+          ctx.strokeStyle = `rgba(122,38,56,${0.35 * (1 - dist/190)})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(n.x, n.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+          n.x += dx * 0.004; n.y += dy * 0.004;
         }
       }
       for (const n of nodes){
